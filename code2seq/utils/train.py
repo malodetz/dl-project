@@ -42,10 +42,7 @@ def train(model: LightningModule, data_module: LightningDataModule, config: Dict
         check_val_every_n_epoch=params.val_every_epoch,
         log_every_n_steps=params.log_every_n_steps,
         logger=wandb_logger,
-        gpus=params.gpu,
-        auto_select_gpus=True,
-        callbacks=[lr_logger, early_stopping_callback, checkpoint_callback, print_epoch_result_callback, progress_bar],
-        resume_from_checkpoint=config.get("checkpoint", None),
+        callbacks=[lr_logger, early_stopping_callback, checkpoint_callback, print_epoch_result_callback, progress_bar]
     )
 
     trainer.fit(model=model, datamodule=data_module)
