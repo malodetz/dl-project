@@ -19,7 +19,7 @@ def get_metrics(file: str):
             bleu_values.append(bleu.sentence_score(predict_comment, [true_comment]).score)
     print("BLEU:", sum(bleu_values) / len(bleu_values))
     print("CHRF:", sum(chrf_values) / len(chrf_values))
-    print("METEOR:", meteor.compute(predictions=p, references=r)['meteor'])
+    print("METEOR:", meteor.compute(predictions=p, references=r)["meteor"])
 
 
 bleu = BLEU(effective_order=True)
